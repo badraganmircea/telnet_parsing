@@ -59,7 +59,7 @@ class MailService:
 
     def send_email(self, message):
         try:
-            self.smtp.sendmail(self.username+'@gmail.com',[self.username+'@gmail.com'], message)
+            self.smtp.sendmail(self.username + '@gmail.com', [self.username + '@gmail.com'], message)
             print "Mesajul electronic a fost trimis cu succes"
         except(), e:
             print "Mesajul electronic nu a fost trimis cu succes"
