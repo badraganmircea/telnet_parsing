@@ -9,4 +9,4 @@ import time
 # tn.exit()
 
 # ntp = NtpConnect("2.ro.pool.ntp.org")
-# ntp.get_response()
+# print ntp.get_response()

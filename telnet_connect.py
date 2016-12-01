@@ -35,5 +35,5 @@ class NtpConnect:
         return ntplib.NTPClient()
 
     def get_response(self):
-        # print self.ntp.request(host, 2, 123, 5)
-        print "Ntp server time ", time.ctime(self.ntp.request(self.host, 2, 123, 5).tx_time)
+        return "Ntp server time ", time.ctime(self.ntp.request(self.host, 2, 123, 5).tx_time)
+
