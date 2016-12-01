@@ -14,8 +14,6 @@ class TelnetConnect:
         self.tn.read_until("Password: ", 5)
         self.tn.write(password + "\r\n")
         print self.tn.read_until(">", 10)
-        self.get_response("show ip route 192.0.2.1")
-        self.exit()
 
     def exit(self):
         self.tn.write("exit" + "\r\n")
