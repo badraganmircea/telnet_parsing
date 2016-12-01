@@ -2,6 +2,7 @@ import telnetlib
 import ntplib
 import time
 import smtplib
+from email.mime.text import MIMEText
 
 
 class TelnetConnect:
@@ -59,10 +60,17 @@ class MailService:
 
     def send_email(self, message):
         try:
-            self.smtp.sendmail(self.username + '@gmail.com', [self.username + '@gmail.com'], message)
+            self.smtp.sendmail(self.username + '@gmail.com', [self.username + '@gmail.com'], self.__message_format(message))
             print "Mesajul electronic a fost trimis cu succes"
         except(), e:
             print "Mesajul electronic nu a fost trimis cu succes"
             print e
         else:
             self.exit()
+
+    def __message_format(self, message):
+        msg = MIMEText(message)
+        msg['Subject'] = 'some bull'
+        msg['From'] = self.username + "@gmail.com"
+        msg['To'] = self.username + "@gmail.com"
+        return msg.as_string()
