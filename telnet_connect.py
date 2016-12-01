@@ -1,4 +1,6 @@
 import telnetlib
+import ntplib
+import time
 
 
 class TelnetConnect:
@@ -21,4 +23,17 @@ class TelnetConnect:
 
     def get_response(self, command):
         self.tn.write(command + "\r\n")
-        print self.tn.read_until("free", 10)
+        return self.tn.read_until("free", 10)
+
+
+class NtpConnect:
+    def __init__(self, host):
+        self.ntp = self.__connect()
+        self.host = host
+
+    def __connect(self):
+        return ntplib.NTPClient()
+
+    def get_response(self):
+        return "Ntp server time ", time.ctime(self.ntp.request(self.host, 2, 123, 5).tx_time)
+
