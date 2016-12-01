@@ -2,6 +2,7 @@ import telnetlib
 import ntplib
 import time
 import smtplib
+import re
 from email.mime.text import MIMEText
 
 
@@ -25,8 +26,10 @@ class TelnetConnect:
 
     def get_response(self, command):
         self.tn.write(command + "\r\n")
-        return self.tn.read_until("free", 10)
+        return self.__contains(self.tn.read_until("free", 10))
 
+    def __contains(self, string_to_check):
+        return re.search("(Known via \"bgp (\d{1,5})\")", string_to_check).groups()[0]
 
 class NtpConnect:
     def __init__(self, host):

@@ -1,11 +1,8 @@
 from services import TelnetConnect, NtpConnect, MailService
-import response_parser
-import ntplib
-import time
 
 tn = TelnetConnect("route-views.routeviews.org")
 tn.login("rviews", "")
-tn_res = response_parser.contains(tn.get_response("show ip route 192.0.2.1"))
+tn_res = tn.get_response("show ip route 192.0.2.1")
 print "tn res is "+tn_res
 tn.exit()
 
