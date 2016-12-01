@@ -1,4 +1,4 @@
-from services import TelnetConnect, NtpConnect
+from services import TelnetConnect, NtpConnect, MailService
 import response_parser
 import ntplib
 import time
@@ -10,3 +10,6 @@ import time
 
 # ntp = NtpConnect("2.ro.pool.ntp.org")
 # print ntp.get_response()
+
+ms = MailService("badraganmircea", "")
+ms.send_email("mes")

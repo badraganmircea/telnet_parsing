@@ -1,6 +1,7 @@
 import telnetlib
 import ntplib
 import time
+import smtplib
 
 
 class TelnetConnect:
@@ -37,3 +38,31 @@ class NtpConnect:
     def get_response(self):
         return "Ntp server time ", time.ctime(self.ntp.request(self.host, 2, 123, 5).tx_time)
 
+
+class MailService:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        self.smtp = self.__login(username, password)
+
+    def __login(self, username, password):
+        try:
+            smtp = smtplib.SMTP('smtp.gmail.com:587')
+            smtp.starttls()
+            smtp.login(username, password)
+            return smtp
+        except(), e:
+            print e
+
+    def exit(self):
+        self.smtp.quit()
+
+    def send_email(self, message):
+        try:
+            self.smtp.sendmail(self.username+'@gmail.com',[self.username+'@gmail.com'], message)
+            print "Mesajul electronic a fost trimis cu succes"
+        except(), e:
+            print "Mesajul electronic nu a fost trimis cu succes"
+            print e
+        else:
+            self.exit()
