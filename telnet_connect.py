@@ -21,4 +21,4 @@ class TelnetConnect:
 
     def get_response(self, command):
         self.tn.write(command + "\r\n")
-        print self.tn.read_until("free", 10)
+        return self.tn.read_until("free", 10)
