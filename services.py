@@ -37,7 +37,7 @@ class NtpConnect:
         return ntplib.NTPClient()
 
     def get_response(self):
-        return "Ntp server time ", time.ctime(self.ntp.request(self.host, 2, 123, 5).tx_time)
+        return "Ntp server time "+time.ctime(self.ntp.request(self.host, 2, 123, 5).tx_time)
 
 
 class MailService:
