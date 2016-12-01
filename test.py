@@ -1,4 +1,4 @@
-from telnet_connect import TelnetConnect, NtpConnect
+from services import TelnetConnect, NtpConnect
 import response_parser
 import ntplib
 import time
