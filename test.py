@@ -8,5 +8,5 @@ import time
 # print response_parser.contains(tn.get_response("show ip route 192.0.2.1"))
 # tn.exit()
 
-ntp = NtpConnect("2.ro.pool.ntp.org")
-ntp.get_response()
+# ntp = NtpConnect("2.ro.pool.ntp.org")
+# ntp.get_response()
